@@ -7,7 +7,7 @@
     "dev": "nodemon index.js",
     "test": "test",
     "start": "npm run db & npm run dev",
-    "prod-test": "npm run db & NODE_ENV=production npm run dev",
+    "prod-test": "npm run db & NODE_ENV=production & npm run dev",
     "db": "NODE_ENV=production & node_modules/.bin/sequelize --env production & node_modules/.bin/sequelize db:migrate --env production & node_modules/.bin/sequelize db:seed:all --env production",
     "db:create": "sequelize db:create"
   },
