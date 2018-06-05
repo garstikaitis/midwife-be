@@ -13,16 +13,21 @@ const sequelize =
           idle: 10000,
         },
       })
-    : new Sequelize('heroku_c891aa4219bdd6f', 'bbe73983f1c94f', 'cdd31008', {
-        host: 'eu-cdbr-west-02.cleardb.net',
-        dialect: 'mysql',
-        operatorsAliases: false,
+    : new Sequelize(
+        process.env.DB_PROD_NAME,
+        process.env.DB_PROD_USERNAME,
+        process.env.DB_PROD_PASSWORD,
+        {
+          host: process.env.DB_PROD_HOST,
+          dialect: 'mysql',
+          operatorsAliases: false,
 
-        pool: {
-          max: 5,
-          min: 0,
-          acquire: 30000,
-          idle: 10000,
+          pool: {
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000,
+          },
         },
-      });
+      );
 module.exports = sequelize;
