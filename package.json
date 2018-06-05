@@ -6,12 +6,16 @@
   "scripts": {
     "dev": "nodemon index.js",
     "test": "test",
-    "start": "npm run dev"
+    "start": "npm run db & npm run dev",
+    "prod-test": "npm run db & NODE_ENV=production npm run dev",
+    "db": "NODE_ENV=production & sequelize --env production & sequelize db:migrate --env production & sequelize db:seed:all --env production",
+    "db:create": "sequelize db:create"
   },
   "author": "Another One",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "mysql2": "^1.5.3",
     "nodemon": "^1.17.5",
